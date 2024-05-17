@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.language-switcher, .text-formatting, .special-actions, .keyboard, .text-display {
+  margin: 10px 0;
+}
+
+button {
+  margin: 2px;
+}
