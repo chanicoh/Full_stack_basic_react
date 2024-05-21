@@ -1,5 +1,4 @@
-
-import './App.css'
+import './App.css';
 import React, { useState } from 'react';
 import Keyboard from './components/Keyboard';
 import LanguageSwitcher from './components/LanguageSwitcher';

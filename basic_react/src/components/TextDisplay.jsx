@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-const TextDisplay = ({ text, setText, fontSize, fontColor, fontFamily }) => {
+const TextDisplay = ({ text, setText }) => {
   const textAreaRef = useRef(null);
 
   const handleInputChange = (e) => {
@@ -11,7 +11,7 @@ const TextDisplay = ({ text, setText, fontSize, fontColor, fontFamily }) => {
     <div
       contentEditable
       ref={textAreaRef}
-      style={{ fontSize, color: fontColor, fontFamily, border: '1px solid #ccc', minHeight: '100px', padding: '10px' }}
+      style={{ border: '1px solid #ccc', minHeight: '100px', padding: '10px' }}
       onInput={handleInputChange}
       suppressContentEditableWarning={true}
     >
