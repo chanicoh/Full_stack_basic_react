@@ -1,30 +1,20 @@
 import React, { useRef } from 'react';
 
-const TextDisplay = ({ text, fontSize, fontColor, fontFamily }) => {
-  const textStyle = {
-    fontSize: fontSize,
-    color: fontColor,
-    fontFamily: fontFamily,
-  };
+const TextDisplay = ({ text, setText, fontSize, fontColor, fontFamily }) => {
+  const textAreaRef = useRef(null);
 
-  const textRef = useRef(null);
-  const handleSelectionChange = () => {
-    const selection = window.getSelection();
-    if (selection.anchorNode && selection.focusNode) {
-      const selectedText = selection.toString();
-      const range = selection.getRangeAt(0);
-      const span = document.createElement('span');
-      span.style.fontSize = fontSize;
-      span.style.color = fontColor;
-      span.style.fontFamily = fontFamily;
-      range.surroundContents(span);
-      selection.removeAllRanges();
-    }
+  const handleInputChange = (e) => {
+    setText(e.target.innerHTML);
   };
-  
 
   return (
-    <div className="text-display" style={textStyle} ref={textRef} onMouseUp={handleSelectionChange}>
+    <div
+      contentEditable
+      ref={textAreaRef}
+      style={{ fontSize, color: fontColor, fontFamily, border: '1px solid #ccc', minHeight: '100px', padding: '10px' }}
+      onInput={handleInputChange}
+      suppressContentEditableWarning={true}
+    >
       {text}
     </div>
   );
