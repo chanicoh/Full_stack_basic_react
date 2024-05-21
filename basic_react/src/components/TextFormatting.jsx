@@ -1,15 +1,28 @@
 import React from 'react';
 
-const TextFormatting = ({ fontSize, setFontSize, fontColor, setFontColor, fontFamily, setFontFamily }) => {
+const TextFormatting = ({  setFontSize, fontColor, setFontColor, setFontFamily }) => {
+  
+  const handleFontSizeChange = (e) => {
+    const selectedFontSize = e.target.value;
+    setFontSize(selectedFontSize);
+  };
+
+ 
+  const handleFontFamilyChange = (e) => {
+    const selectedFontFamily = e.target.value;
+    setFontFamily(selectedFontFamily);
+  };
+
   return (
     <div className="text-formatting">
-      <div>
+     <div>
         <label>Font Size:</label>
-        <input
-          type="number"
-          value={fontSize.replace('px', '')}
-          onChange={(e) => setFontSize(e.target.value + 'px')}
-        />
+        <select onChange={handleFontSizeChange}>
+          <option value="12px">12</option>
+          <option value="14px">14</option>
+          <option value="16px">16</option>
+          <option value="30px">30</option>
+        </select>
       </div>
       <div>
         <label>Font Color:</label>
@@ -21,11 +34,10 @@ const TextFormatting = ({ fontSize, setFontSize, fontColor, setFontColor, fontFa
       </div>
       <div>
         <label>Font Family:</label>
-        <select value={fontFamily} onChange={(e) => setFontFamily(e.target.value)}>
+        <select onChange={handleFontFamilyChange}>
           <option value="Arial">Arial</option>
           <option value="Courier New">Courier New</option>
           <option value="Times New Roman">Times New Roman</option>
-          {/* Add more fonts as needed */}
         </select>
       </div>
     </div>

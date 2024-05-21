@@ -5,7 +5,7 @@ const LanguageSwitcher = ({ language, setLanguage }) => {
     <div className="language-switcher">
       <button onClick={() => setLanguage('en')}>English</button>
       <button onClick={() => setLanguage('he')}>Hebrew</button>
-      {/* Add more languages as needed */}
+      <button onClick={() => setLanguage('em')}>Emoji</button>
     </div>
   );
 };

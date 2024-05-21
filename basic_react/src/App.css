@@ -10,3 +10,36 @@
 button {
   margin: 2px;
 }
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.language-switcher, .text-formatting, .special-actions, .keyboard, .text-display {
+  margin: 10px 0;
+}
+
+button {
+  margin: 2px;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.language-switcher, .text-formatting, .special-actions, .keyboard, .text-display {
+  margin: 10px 0;
+}
+
+button {
+  margin: 2px;
+}
+
+.text-display {
+  border: 1px solid #ccc;
+  min-height: 100px;
+  padding: 10px;
+  overflow: auto;
+}

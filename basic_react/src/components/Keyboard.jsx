@@ -13,16 +13,19 @@ const Keyboard = ({ text, setText, language }) => {
     setText(text.slice(0, -1));
   };
 
-  const handleUndo = () => {
-    // Implement undo functionality if needed
-  };
 
   let keys;
   if (language === 'en') {
     keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   } else {
-    keys = 'אבגדהוזחטיכלמנסעפצקרשת'.split('');
+    if(language === 'he'){
+      keys = 'אבגדהוזחטיכלמנסעפצקרשת'.split('');
+    }
+    else
+    keys ='🥰,😀,😄,😆,🥹,😅,😂,😞,😍,❤,💔'.split(',');
+  
   }
+
 
   return (
     <div className="keyboard">
@@ -32,8 +35,7 @@ const Keyboard = ({ text, setText, language }) => {
         </button>
       ))}
       <button onClick={handleSpace}>SPACE</button>
-      <button onClick={handleDelete}>DELETE</button>
-      <button onClick={handleUndo}>UNDO LAST</button>
+      <button onClick={handleDelete}>DELETE LAST</button>
     </div>
   );
 };

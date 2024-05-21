@@ -2,7 +2,7 @@ import React from 'react';
 
 const SpecialActions = ({ setText }) => {
   const deleteLastCharacter = () => {
-    setText((prev) => prev.slice(0, -1));
+    setText(text.slice(0, -1));
   };
 
   const clearText = () => {
@@ -10,7 +10,7 @@ const SpecialActions = ({ setText }) => {
   };
 
   const undoAction = () => {
-    // Implement undo functionality if needed
+    document.execCommand('undo');
   };
 
   return (
@@ -18,7 +18,7 @@ const SpecialActions = ({ setText }) => {
       <button onClick={deleteLastCharacter}>Delete Last</button>
       <button onClick={clearText}>Clear All</button>
       <button onClick={undoAction}>Undo</button>
-      {/* Add more special actions as needed */}
+      
     </div>
   );
 };
