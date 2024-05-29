@@ -25,12 +25,22 @@ const SpecialActions = ({ text, setText }) => {
   };
 
   const caselowerupper = () => {
-    setText((prev) => {
-      return prev.split('').map(char => {
-        const toggledChar = char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase();
-        return `_${toggledChar}_`;
-      }).join('');
-    });
+    const selection = window.getSelection();
+    if (!selection.rangeCount) return;
+
+    const range = selection.getRangeAt(0);
+    const parentNode = range.commonAncestorContainer.parentNode;
+
+    if (parentNode && parentNode.style.textDecoration === 'underline') {
+      // If the text is underlined, remove the underline
+      parentNode.style.textDecoration = '';
+    } else {
+      // If the text is not underlined, add the underline
+      const span = document.createElement('span');
+      span.style.textDecoration = 'underline';
+      span.appendChild(range.extractContents());
+      range.insertNode(span);
+    }
   };
 
 
