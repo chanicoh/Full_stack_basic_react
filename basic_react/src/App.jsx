@@ -27,9 +27,7 @@ const App = () => {
       <SpecialActions setText={setText} />
       <TextDisplay
         text={text}
-        fontSize={fontSize}
-        fontColor={fontColor}
-        fontFamily={fontFamily}
+        setText={setText}
       />
       <Keyboard text={text} setText={setText} language={language} />
     </div>
