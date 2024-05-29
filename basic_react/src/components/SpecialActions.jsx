@@ -23,25 +23,40 @@ const SpecialActions = ({ text, setText }) => {
       }).join('');
     });
   };
-
   const caselowerupper = () => {
     const selection = window.getSelection();
     if (!selection.rangeCount) return;
-
+  
     const range = selection.getRangeAt(0);
-    const parentNode = range.commonAncestorContainer.parentNode;
-
-    if (parentNode && parentNode.style.textDecoration === 'underline') {
-      // If the text is underlined, remove the underline
-      parentNode.style.textDecoration = '';
-    } else {
-      // If the text is not underlined, add the underline
-      const span = document.createElement('span');
-      span.style.textDecoration = 'underline';
-      span.appendChild(range.extractContents());
-      range.insertNode(span);
+    const commonAncestor = range.commonAncestorContainer;
+  
+    if (commonAncestor.nodeType === 3) {
+      // Text node, check parent for underline
+      const parentNode = commonAncestor.parentNode;
+      if (parentNode && parentNode.style.textDecoration === 'underline') {
+        // If the text is underlined, remove the underline
+        parentNode.style.textDecoration = '';
+      } else {
+        // If the text is not underlined, add the underline
+        const span = document.createElement('span');
+        span.style.textDecoration = 'underline';
+        range.surroundContents(span);
+      }
+    } else if (commonAncestor.nodeType === 1) {
+      // Element node
+      if (commonAncestor.style.textDecoration === 'underline') {
+        // If the text is underlined, remove the underline
+        commonAncestor.style.textDecoration = '';
+      } else {
+        // If the text is not underlined, add the underline
+        const span = document.createElement('span');
+        span.style.textDecoration = 'underline';
+        span.appendChild(range.extractContents());
+        range.insertNode(span);
+      }
     }
   };
+  
 
 
   return (
